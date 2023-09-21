@@ -7,31 +7,32 @@
 
 import React from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
   View,
 } from 'react-native';
+import Rectangle from './Components/Rectangle';
 
-
-
-
-
-const App=()=>{
-
+const App = () => {
+  const rectangleHeight = 200;
+  const rectangleWidth = 300;
 
   return (
-<View style={{flex:1,backgroundColor:'#FFFFFF'}}>
-
-</View>
+    <View style={styles.main}>
+      <Rectangle
+        height={rectangleHeight}
+        width={rectangleWidth}
+        color={'cyan'}></Rectangle>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-
+  main: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+  },
 });
 
 export default App;
