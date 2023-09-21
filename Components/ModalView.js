@@ -15,9 +15,16 @@ const ModalView = ({
   initialColor,
   applyAction,
 }) => {
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-  const [color, setColor] = useState('');
+  const [width, setWidth] = useState(null);
+  const [height, setHeight] = useState(null);
+  const [color, setColor] = useState(null);
+  useEffect(()=>{
+
+      setColor(null);
+      setHeight(null);
+      setWidth(null);
+
+  },[show])
 
   return (
     <Modal
@@ -65,7 +72,7 @@ const ModalView = ({
           style={styles.buttonStyle}
           title={'Apply'}
           action={() => {
-            applyAction(height, width, color);
+            applyAction(height!=null?height:initialHeight, width!=null?width:initialWidth, color!=null?color:initialColor);
           }}
         />
       </View>
