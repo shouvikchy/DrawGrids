@@ -7,7 +7,9 @@ const Rectangle = props => {
         height: props.height,
         width: props.width,
         backgroundColor: props.color,
-        flexWrap:'wrap'
+        flexWrap:'wrap',
+        borderWidth:0.5,
+        borderColor:'#000'
       }}>
       {/* render the child components inside rectangle */}
       {props.children}
