@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text,SafeAreaView} from 'react-native';
 import Rectangle from './Components/Rectangle';
 import {gridMaker} from './Helper/Common';
 import ModalView from './Components/ModalView';
@@ -58,7 +58,7 @@ const App = () => {
       />
   }
   return (
-    <View style={styles.main}>
+    <SafeAreaView style={styles.main}>
             {/* page title */}
             <Text style={styles.mainText}>Let's Make Grid</Text>
 
@@ -79,7 +79,7 @@ const App = () => {
           setshowModal(true);
         }}
       />
-    </View>
+    </SafeAreaView>
 
   );
 };
