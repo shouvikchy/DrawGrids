@@ -6,7 +6,7 @@ import TextField from './TextField';
 import Dropdown from './Dropdown';
 import {Colors} from '../Helper/Colors';
 import Button from './Button';
-
+import {Fonts} from '../Helper/fonts/Fonts';
 const ModalView = ({
   closeModal,
   show,
@@ -41,11 +41,16 @@ const ModalView = ({
           <View style={{flex: 1, backgroundColor: '#616264'}} />
         </TouchableWithoutFeedback>
       }
-      style={{justifyContent: 'flex-end', margin: 0}}>
-      <View style={styles.main}>
-        <Text>hello</Text>
+      style={{justifyContent: 'flex-end',marginBottom:0}}>
+        <View style={styles.main}>
+          <View style={styles.dropModalStyle}>
+
+          </View>
+        <Text style={styles.basicText}><Text style={{color:"red"}}>*</Text>The parent rectangle is 200 X 300 px</Text>
+        <Text style={styles.basicText}>⦿ Grid height should be the value that 200 is entirely divisable by it.{'\n'}⦿ Grid width should be the value that 300 is completely divisable by it.</Text>
+
         <TextField
-          title={'Grid Height:'}
+          title={'Grid Height: '}
           value={initialHeight ? initialHeight : 0}
           placeholder={'Enter Grid Height'}
           onChange={h => {
@@ -53,9 +58,10 @@ const ModalView = ({
           }}
         />
         <TextField
-          title={'Grid Width:'}
+          title={'Grid Width:  '}
           value={initialWidth ? initialWidth : 0}
           placeholder={'Enter Grid Width'}
+          onSubmitEditing={()=>alert("hi")}
           onChange={w => {
             setWidth(w);
           }}
@@ -64,53 +70,36 @@ const ModalView = ({
           onSelect={c => {
             setColor(c);
           }}
-          title={'Select Color'}
+          title={'Select Color:'}
           data={Colors}
           initialColor={initialColor}
         />
         <Button
-          style={styles.buttonStyle}
           title={'Apply'}
+          image={require('../tick.png')}
           action={() => {
             applyAction(height!=null?height:initialHeight, width!=null?width:initialWidth, color!=null?color:initialColor);
           }}
         />
-      </View>
+
+        </View>
+     
     </Modal>
   );
 };
 
 export default ModalView;
 const styles = StyleSheet.create({
-  common: {
-    width: '50%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  sub: {
-    backgroundColor: '#FFFFFF',
-    paddingHorizontal: 20,
-    width: '95%',
-    alignSelf: 'center',
-  },
   main: {
-    width: '95%',
-    maxHeight: '90%',
-    backgroundColor: '#FFFFFF',
+    width: '100%',
+    backgroundColor: '#fff',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     marginTop: -15,
     padding: 20,
-    alignSelf: 'center',
+
   },
-  buttonStyle: {
-    height: 30,
-    width: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5,
-    backgroundColor: 'cyan',
-    marginTop: 20,
-    alignSelf: 'center',
-  },
+  dropModalStyle:{height:5,width:70,backgroundColor:"#000",borderRadius:5,alignSelf:"center",marginBottom:20},
+  basicText:{fontSize:14,marginBottom:20,fontFamily:Fonts.medium,color:"#808080"},
+
 });

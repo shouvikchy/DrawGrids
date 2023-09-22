@@ -8,10 +8,12 @@ const Rectangle = props => {
         width: props.width,
         backgroundColor: props.color,
         flexWrap:'wrap',
+        marginBottom:20
       }}>
       {/* render the child components inside rectangle */}
       {props.children}
     </View>
   );
 };
+
 export default Rectangle;

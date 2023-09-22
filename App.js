@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import Rectangle from './Components/Rectangle';
-import Grid from './Components/Grid';
 import {gridMaker} from './Helper/Common';
 import ModalView from './Components/ModalView';
 import Button from './Components/Button';
+import {Fonts} from './Helper/fonts/Fonts';
 
 const App = () => {
   const rectangleHeight = 200;
@@ -38,13 +38,13 @@ const App = () => {
       setgridHeight(height);
       setgridWidth(width);
       setgridColor(color);
+      setshowModal(false);
     }
-    setshowModal(false);
+   
+   
   };
-  return (
-    <View style={styles.main}>
-      {/* modal view to get user inputs */}
-      <ModalView
+  const renderModal=()=>{
+   return <ModalView
         closeModal={() => {
           setshowModal(false);
         }}
@@ -56,6 +56,14 @@ const App = () => {
         initialHeight={gridHeight}
         initialColor={gridColor}
       />
+  }
+  return (
+    <View style={styles.main}>
+            {/* page title */}
+            <Text style={styles.mainText}>Let's Make Grid</Text>
+
+      {/* modal view to get user inputs */}
+      {renderModal()}
       {/* parent rectangle */}
       <Rectangle
         height={rectangleHeight}
@@ -65,32 +73,20 @@ const App = () => {
         {grid ? grid : null}
       </Rectangle>
       <Button
-        style={styles.buttonStyle}
+        image={require('./setting.png')}
         title={'Change Grid'}
         action={() => {
           setshowModal(true);
         }}
       />
     </View>
+
   );
 };
 
 const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-  },
-  buttonStyle: {
-    height: 30,
-    width: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5,
-    backgroundColor: 'cyan',
-    marginTop: 20,
-  },
+  main: {flex:1,backgroundColor:"#fff",padding:20,alignItems:"center"},
+  mainText:{fontSize:18,fontFamily:Fonts.bold,color:'#000',marginBottom:30}
 });
 
 export default App;

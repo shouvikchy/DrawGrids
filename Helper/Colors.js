@@ -1,1 +1,1 @@
-export const Colors = ['red', 'green', 'blue', 'cyan']; //colors to show on dropdown
+export const Colors = ['pink', 'yellow', 'cyan', 'orange']; //colors to show on dropdown
